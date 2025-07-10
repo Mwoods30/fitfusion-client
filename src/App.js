@@ -4,6 +4,7 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import WorkoutForm from './components/WorkoutForm';
 import History from './components/History';
+import './App.css'; // Importing the CSS file for styling
 
 function Main() {
   const { token, logout } = useContext(AuthContext);

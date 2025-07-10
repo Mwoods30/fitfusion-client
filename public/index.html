@@ -2,42 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>Gymlytics - Your Personalized Workout Generator</title>
+    <meta name="description" content="FitFusion is a web app that creates personalized workouts and tracks your fitness history." />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="theme-color" content="#2563eb" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- Main App styles -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/App.css" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/styles.css" />
+    <!-- Custom styles: edit public/custom.css to style the page -->
+    <link rel="stylesheet" href="custom.css" />
+    <style>
+      /* Prevent white flash before React loads */
+      body {
+        background: #f3f4f6;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+      }
+      #root { display: none; }
+    </style>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){window.dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX'); // Replace with your actual Google Analytics ID
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Navigation bar -->
+    <nav>
+      <img src="dumbbell.png" alt="FitFusion Logo" class="logo" />
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/workout">Generate Workout</a></li>
+        <li><a href="/history">History</a></li>
+      </ul>
+    </nav>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <script>
+      // Show #root after page load to prevent white flash
+      window.addEventListener('load', () => {
+        document.getElementById('root').style.display = 'block';
+      });
+    </script>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Edit public/custom.css to style the page directly -->
+    <h1>Gymlytics</h1>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <p>Welcome to Gymlytics, your personalized workout generator!</p>
+    <p>Use the navigation bar to explore the app.</p>
+    <p>Check out the <a href="/workout">Generate Workout</a>
+    and <a href="/history">History</a> pages to get started.</p>
+    <p>For any issues, please contact support.</p>
   </body>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Gymlytics. All rights reserved.</p>
+    </div>
+  </footer>
 </html>
