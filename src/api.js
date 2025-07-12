@@ -1,13 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://fitfuision.onrender.com/', // or your deployed backend URL
+  baseURL: 'https://fitfusion.onrender.com/', // fixed typo in backend URL
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-
-
 export default api;
-
