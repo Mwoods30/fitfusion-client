@@ -1,69 +1,101 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './AuthContext';
-import RegisterForm from './components/RegisterForm';
-import LoginForm from './components/LoginForm';
-import WorkoutForm from './components/WorkoutForm';
-import History from './components/History';
-import './App.css'; // Importing the CSS file for styling
+import RegisterForm from './Componets/RegisterForm';
+import LoginForm from './Componets/LoginForm';
+import WorkoutForm from './Componets/WorkoutForm';
+import History from './Componets/History';
+import LoginRegisterPage from './Componets/LoginRegisterPage'; // Import instead of defining here
+import './App.css';
 
-function Main() {
+function Navbar() {
   const { token, logout } = useContext(AuthContext);
-  const [showRegister, setShowRegister] = useState(null); // null = no choice yet
+  return (
+    <nav>
+ {/* Logo */}
+  <div className="flex items-center gap-2">
+  <img src="dumbbell.png" alt="Gymlytics Logo" className="logo" />
+</div>
 
-  if (token) {
-    return (
-      <>
-        <button onClick={logout} className="mb-4 px-4 py-2 bg-red-500 text-white rounded">
+<div>
+  {/* Title */}
+<span className="title">Gymlytics</span>
+</div>
+
+
+  {/* Navigation Links */}
+  <ul className="flex flex-col sm:flex-row gap-4 mt-4 sm:mt-0">
+    <li><Link to="/" className="hover:underline">Home</Link></li>
+    <li><Link to="/login" className="hover:underline">Sign In</Link></li>
+    <li><Link to="/workout" className="hover:underline">Generate Workout</Link></li>
+    <li><Link to="/history" className="hover:underline">History</Link></li>
+    {token && (
+      <li>
+        <button
+          onClick={logout}
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        >
           Logout
         </button>
-        <WorkoutForm />
-        <History />
-      </>
-    );
-  }
+      </li>
+    )}
+  </ul>
+</nav>
+  );
+}
 
-  if (showRegister === null) {
-    return (
-      <div className="flex gap-4 justify-center">
-        <button
-          onClick={() => setShowRegister(true)}
-          className="px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Register
-        </button>
-        <button
-          onClick={() => setShowRegister(false)}
-          className="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700"
-        >
-          Login
-        </button>
-      </div>
-    );
-  }
+function Home() {
+  // Home component content
+  return (
+    <div>
+    <br></br><br></br><br></br><br></br><br></br><br></br>
+      <h1> Gymlytics</h1>
+    
+    <div>
+    <br></br><br></br><br></br><br></br><br></br><br></br>
+    </div>
+      <p>Welcome to Gymlytics! Use the navigation bar to login, generate workouts, and view your history.</p>
+    </div>
+  );
+}
+
+function PrivateRoute({ children }) {
+  const { token } = useContext(AuthContext);
+  return token ? children : <Navigate to="/login" replace />;
+}
+
+function AppRoutes() {
+  const { token } = useContext(AuthContext);
 
   return (
-    <>
-      {showRegister ? <RegisterForm /> : <LoginForm />}
-      <button
-        onClick={() => setShowRegister(null)}
-        className="mt-4 px-4 py-2 border rounded hover:bg-gray-100"
-      >
-        Back
-      </button>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<LoginRegisterPage />} />
+      <Route
+  path="/workout"
+  element={
+    <PrivateRoute>
+      <WorkoutForm />
+    </PrivateRoute>
+  }
+/>
+      <Route
+        path="/history"
+        element={token ? <History /> : <Navigate to="/login" replace />}
+      />
+    </Routes>
   );
 }
 
 function App() {
   return (
     <AuthProvider>
-      <div className="p-6 max-w-lg mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-center">🏋️‍♀️ FitFusion</h1>
-        <Main />
-      </div>
+      <Router>
+        <Navbar />
+        <AppRoutes />
+      </Router>
     </AuthProvider>
   );
 }
 
 export default App;
-

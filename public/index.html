@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gymlytics - Your Personalized Workout Generator</title>
-    <meta name="description" content="FitFusion is a web app that creates personalized workouts and tracks your fitness history." />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="theme-color" content="#2563eb" />
+    <meta name="description" content="Gymlytics is a web app that creates personalized workouts and tracks your fitness history." />
+    <title>Gymlytics - Your Personalized Workout Generator</title>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,17 +36,15 @@
     </script>
   </head>
   <body>
-    <!-- Navigation bar -->
-    <nav>
-      <img src="dumbbell.png" alt="FitFusion Logo" class="logo" />
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/workout">Generate Workout</a></li>
-        <li><a href="/history">History</a></li>
-      </ul>
-    </nav>
-    <div id="root"></div>
+
+    <main>
+      <div id="root"></div>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Gymlytics. All rights reserved.</p>
+      </div>
+    </footer>
     <script>
       // Show #root after page load to prevent white flash
       window.addEventListener('load', () => {
@@ -54,18 +52,5 @@
       });
     </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <!-- Edit public/custom.css to style the page directly -->
-    <h1>Gymlytics</h1>
-
-    <p>Welcome to Gymlytics, your personalized workout generator!</p>
-    <p>Use the navigation bar to explore the app.</p>
-    <p>Check out the <a href="/workout">Generate Workout</a>
-    and <a href="/history">History</a> pages to get started.</p>
-    <p>For any issues, please contact support.</p>
   </body>
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 Gymlytics. All rights reserved.</p>
-    </div>
-  </footer>
 </html>

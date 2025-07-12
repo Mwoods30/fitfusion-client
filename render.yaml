@@ -1,0 +1,8 @@
+# render.yaml
+services:
+  - type: web
+    name: fitfusion-client
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    branch: main
