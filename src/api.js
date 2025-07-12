@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://fitfusion.onrender.com/', // fixed typo in backend URL
+  baseURL: 'https://fitfuision.onrender.com/', // reverted to original deployed backend URL
   headers: {
     'Content-Type': 'application/json',
   },
