@@ -14,6 +14,7 @@ export default function RegisterForm() {
     setLoading(true);
     setMsg('');
     try {
+      console.log('Registering with:', { email, password });
       const res = await api.post('/api/register', { email, password });
       login(res.data.access_token); // optional auto-login
       setMsg('Registration successful');
