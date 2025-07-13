@@ -14,12 +14,15 @@ export default function RegisterForm() {
     setLoading(true);
     setMsg('');
     try {
+      
       const res = await api.post('/api/register', { email, password });
+      console.log("Attempting registration with:", { email, password });
       login(res.data.access_token); // optional auto-login
       setMsg('Registration successful');
     } catch (err) {
-      setMsg('Registration failed');
-    } finally {
+    console.error("Registration error:", err.response?.data || err.message);
+    setMsg(err.response?.data?.msg || 'Registration failed');
+    }finally {
       setLoading(false);
     }
   };

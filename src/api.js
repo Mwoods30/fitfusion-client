@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://fitfuision.onrender.com',  // <-- Use your deployed backend URL here
+  baseURL: 'http://localhost:5001', // reverted to original deployed backend URL
   headers: {
     'Content-Type': 'application/json',
   },
