@@ -1,58 +1,34 @@
 import React, { useState, useContext } from 'react';
-import api from '../api';
 import { AuthContext } from '../AuthContext';
+import { useNavigate } from 'react-router-dom';
+import api from '../api';
 
 export default function RegisterForm() {
-  const { login } = useContext(AuthContext);
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [msg, setMsg] = useState('');
-  const [loading, setLoading] = useState(false);
 
-  const handleRegister = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setMsg('');
     try {
-      
-      const res = await api.post('/api/register', { email, password });
-      console.log("Attempting registration with:", { email, password });
-      login(res.data.access_token); // optional auto-login
-      setMsg('Registration successful');
+      const res = await api.post('/api/register', { email, password, name });
+      login(res.data.access_token, res.data.user);
+      navigate('/profile');
     } catch (err) {
-    console.error("Registration error:", err.response?.data || err.message);
-    setMsg(err.response?.data?.msg || 'Registration failed');
-    }finally {
-      setLoading(false);
+      setMsg('Registration failed');
     }
   };
 
   return (
-    <form onSubmit={handleRegister} className="register-form">
-      <input
-        type="email"
-        name="email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        placeholder="Email"
-        className="form-input"
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        placeholder="Password"
-        className="form-input"
-        required
-      />
-      <button type="submit" className="form-button" disabled={loading}>
-        {loading ? 'Registering...' : 'Register'}
-      </button>
-      <p className={`form-message ${msg.includes('successful') ? 'success' : 'error'}`}>
-        {msg}
-      </p>
+    <form onSubmit={handleSubmit} className="form">
+      <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Name" required />
+      <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" required />
+      <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" required />
+      <button type="submit">Register</button>
+      {msg && <p>{msg}</p>}
     </form>
   );
 }

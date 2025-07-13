@@ -20,7 +20,7 @@ export default function LoginRegisterPage() {
           onClick={() => setShowRegister(true)}
           className={`Choice px-6 py-3 ${showRegister ? 'bg-blue-600' : 'bg-gray-300'} text-white rounded hover:bg-blue-700`}
         >
-          Register
+          Sign Up
         </button>
       </div>
 

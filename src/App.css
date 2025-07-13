@@ -1,3 +1,4 @@
+/*Main Body Styles*/ 
 .App {
   text-align: center;
   height: max-content;
@@ -124,5 +125,246 @@
   color: red;
 }
 .login-form, .register-form {
-  width: auto;
+  width: 100%;
+}
+.logout-button{
+  background-color: red;
+  border-radius: 10%;
+  border-width: 0ch;
+  margin-right: 10px;
+}
+.logout-button :hover{
+  background-color: #1defef;
+  color: #1defef;
+}
+/*Calendar Styles*/
+
+.calendar-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.custom-calendar {
+  margin: 20px auto;
+  max-width: 350px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.workout-streak {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.streak-count {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1a73e8;
+  margin-top: 10px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+/* Profile */
+/* Container for whole profile page */
+.profile-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d3748;
+}
+
+/* Section titles like "Personalization", "Workout Preferences" */
+.section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2b6cb0; /* blue */
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #bee3f8;
+  padding-bottom: 0.25rem;
+}
+
+/* Each section inside the profile */
+.profile-section {
+  margin-bottom: 2rem;
+}
+
+/* Label styling */
+.section-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #4a5568; /* gray-700 */
+}
+
+/* Select inputs */
+.select-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1.5px solid #cbd5e0;
+  transition: border-color 0.2s ease;
+}
+
+.select-input:focus {
+  border-color: #3182ce;
+  outline: none;
+  box-shadow: 0 0 6px rgba(49, 130, 206, 0.5);
+}
+
+/* Group for checkboxes */
+.checkbox-group {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+/* For toggle sections (single checkbox with label) */
+.toggle-section label {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.toggle-section input[type="checkbox"] {
+  margin-right: 0.75rem;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+/* Heart Rate Zones inputs container */
+.hr-zone-inputs {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.hr-zone-inputs > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.hr-zone-inputs label {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: #4a5568;
+}
+
+/* Number inputs for HR zones */
+.number-input {
+  width: 80px;
+  padding: 0.4rem 0.6rem;
+  border: 1.5px solid #cbd5e0;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.number-input:focus {
+  border-color: #3182ce;
+  outline: none;
+  box-shadow: 0 0 6px rgba(49, 130, 206, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .checkbox-group {
+    flex-direction: column;
+  }
+  .hr-zone-inputs {
+    flex-direction: column;
+  }
+  .hr-zone-inputs > div {
+    width: 100%;
+  }
+}
+.profile-main{
+  justify-content: center;
+  align-items: center;
+}
+/* --- DROPDOWN MENU STYLE --- */
+.dropdown-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  z-index: 100;
+}
+
+.dropdown-toggle {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  transition: opacity 0.3s ease;
+}
+
+.dropdown-menu.show {
+  display: flex;
+}
+
+.dropdown-menu li {
+  list-style: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu li:hover,
+.dropdown-menu li.active {
+  background-color: #f0f4ff;
+  color: #1a73e8;
+  font-weight: bold;
+}
+
+/* Optional: Content layout below */
+.profile-main {
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
